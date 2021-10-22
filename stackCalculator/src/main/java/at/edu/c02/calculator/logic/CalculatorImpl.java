@@ -16,7 +16,13 @@ public class CalculatorImpl implements Calculator {
 		double b = pop();
 		double a = pop();
 
-		switch (op) {
+		switch (op)
+		{
+			case mod:
+				double modresult = a%b;
+					if(Double.isNaN(modresult))
+						throw new CalculatorException("Modulo division by zero");
+				return modresult;
 		case add:
 			return a + b;
 		case sub:
@@ -28,11 +34,7 @@ public class CalculatorImpl implements Calculator {
 			return c;
 		case mul:
 			return a * b;
-			case mod:
-				double modresult = a%b;
-				if(Double.isInfinite(modresult))
-					throw new CalculatorException("Modulo division by zero");
-				return modresult;
+
 		}
 		return 0;
 	}
