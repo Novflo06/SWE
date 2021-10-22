@@ -18,11 +18,11 @@ public class CalculatorImpl implements Calculator {
 
 		switch (op)
 		{
-			case mod:
-				double modresult = a%b;
-					if(Double.isNaN(modresult))
-						throw new CalculatorException("Modulo division by zero");
-				return modresult;
+		case mod:
+			double modresult = a%b;
+				if(Double.isNaN(modresult))
+					throw new CalculatorException("Modulo division by zero");
+			return modresult;
 		case add:
 			return a + b;
 		case sub:

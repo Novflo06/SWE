@@ -52,10 +52,39 @@ public class CalculatorTest {
 		assertEquals(3, result, 0);
 
 	}
-	
-	
-	
-	
+
+
+	@Test
+	public void testSimpleModOperation() throws Exception {
+
+		Calculator calc = new CalculatorImpl();
+		calc.push(27);
+		calc.push(48);
+		double result = calc.perform(Operation.mod);
+
+		assertEquals(27, result, 0);
+
+	}
+
+
+	@Test
+	public void testModByZero() throws Exception {
+
+		//Setup
+		Calculator calc = new CalculatorImpl();
+		try {
+			calc.push(28);
+			calc.push(0);
+			calc.perform(Operation.mod);
+			fail("Exception expected");
+
+
+		} catch (CalculatorException e) {
+			assertEquals("Modulo division by zero", e.getMessage());
+			// e.getCause()
+		}
+
+	}
 
 	//
 	@Test(expected = CalculatorException.class)
